@@ -274,7 +274,7 @@ if(winner===false){
 					<div className="centercolumn fill">
 			<>
 				<div>
-					<h3 className="gamerow center">Winner is {won}</h3>
+					<h3 className="gamerow center">Winner is Player {won}</h3>
 				</div>
 				<div>
 					<h3 className="gamerow center">Would you like to Play Again?</h3>
