@@ -9,7 +9,7 @@ function PlayConnect4() {
 	const [turn,setTurn] = useState (1)
 	const [donePlaying,setDonePlaying] = useState(false)
 	let showMessage = false
-	const [won,setWon] = useState(0)
+	const [won,setWon] = useState(2)
 	const[row,setRow] = useState(0)
 	const[col,setCol] = useState(0)
 	const [ message, setMessage] = useState ("")
@@ -87,7 +87,7 @@ function PlayConnect4() {
 	  const handleDropCol = (column) =>{
 		showMessage = false
 		setWon(turn)
-
+		console.log(turn)
 		if (board[6][column] === null) { updateBoard(6, column);} 
 		else if (board[5][column] === null) { updateBoard(5, column);} 
 		else if (board[4][column] === null) { updateBoard(4, column);} 
