@@ -1,0 +1,31 @@
+.home-content{
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
+
+}
+
+.header-link{
+
+    width: 150px;
+    border-radius: 5px;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    color: white;
+    flex-shrink: 0;
+    margin:5px;
+
+}
+.logo-container{
+    max-height: 12vh;
+    min-height: 20px;
+    width: auto;
+    
+}
+.logo{
+    max-height: 100%;
+    width: auto;
+}
