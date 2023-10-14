@@ -69,8 +69,6 @@ function PlayConnect4() {
 	  }
 
 
-
-
 	  const updateBoard = (rowIndex,colIndex)=>{
 		setMessage("");
 		showMessage=false;
@@ -84,22 +82,6 @@ function PlayConnect4() {
 		setRow(rowIndex);
 		setCol(colIndex)
 	  }
-
-
-
-
-	  const playAgain = ()=>{
-		setWinner(false);
-		setNewBoard();
-	  }
-
-
-
-	  const endGame = ()=>{
-	    setDonePlaying(true);
-	  }
-
-
 
 
 	  const handleDropCol = (column) =>{
@@ -116,9 +98,6 @@ function PlayConnect4() {
 		else { tryAnotherColumn()} 
 
 	}
-
-
-
 
 
 	  const showBoard = (cellValue,index) => {
@@ -224,6 +203,18 @@ function PlayConnect4() {
 				topRight = topLeft + 3;
 			}
 		  }
+
+
+	  const playAgain = ()=>{
+		setWinner(false);
+		setNewBoard();
+	  }
+
+
+
+	  const endGame = ()=>{
+	    setDonePlaying(true);
+	  }
 
 		
 
