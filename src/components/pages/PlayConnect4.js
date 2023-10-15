@@ -42,8 +42,7 @@ function PlayConnect4() {
 	}
 
 	useEffect(()=>{
-		if(row!==0||col!==0){
-		checkForWin();}
+		checkForWin();
 	},[board])
 
 	useEffect(()=>{
