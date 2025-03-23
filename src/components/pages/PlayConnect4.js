@@ -9,13 +9,15 @@ function PlayConnect4() {
 	const [turn,setTurn] = useState (1)
 	const [donePlaying,setDonePlaying] = useState(false)
 	let showMessage = false
+	const [redWins, setRedWins] = useState(0);
+	const [yellowWins, setYellowWins] = useState(0);
 	const [won,setWon] = useState(2)
 	const[row,setRow] = useState(0)
 	const[col,setCol] = useState(0)
-	const [ message, setMessage] = useState ("")
+	const [message, setMessage] = useState ("")
 	const [winner,setWinner] = useState(false)
 	const [turnMessage, setTurnMessage] = useState("Red, please enter the column to drop your checker:")
-
+	const [previousBoard, setPreviousBoard] = useState([]);
 	const [board,setBoard] = useState([
 		[null, null, null, null, null, null],
 		[null, null, null, null, null, null],
@@ -24,7 +26,7 @@ function PlayConnect4() {
 		[null, null, null, null, null, null],
 		[null, null, null, null, null, null],
 		[null, null, null, null, null, null],
-]);
+	]);
 
 
 	const setNewBoard =()=>{
@@ -52,6 +54,15 @@ function PlayConnect4() {
 		}else{changeTurnMessage()}
 	},[board])
 
+	useEffect(()=>{
+		if(winner && won === 1){
+			console.log('red winner');
+			setRedWins(redWins + 1);
+		} else if (winner && won === 2) {
+			console.log('yelow winner');
+			setYellowWins(yellowWins + 1);
+		}
+	},[winner]);
 
 	  const changeTurnMessage =()=>{
 		if(turn === 2) {setTurn(1); setTurnMessage("Red, please enter the column to drop your checker:");}
@@ -71,6 +82,7 @@ function PlayConnect4() {
 	  const updateBoard = (rowIndex,colIndex)=>{
 		setMessage("");
 		showMessage=false;
+		setPreviousBoard(board);
 		setBoard(prevBoard=>{
 
 			const newBoard = [...prevBoard];
@@ -80,6 +92,16 @@ function PlayConnect4() {
 		});
 		setRow(rowIndex);
 		setCol(colIndex)
+	  }
+
+	  const undoLast = () => {
+
+		if(previousBoard){
+			setBoard(previousBoard);
+		} else {
+			setNewBoard()
+		}
+
 	  }
 
 
@@ -220,12 +242,17 @@ function PlayConnect4() {
 
 if(winner===false){
 	return (
-    
+		
 		<div className='flex-col background fill center'>
 			<div className='flex-row center fill'>
 				<div className="sidecolumn fill"></div>
 					<div className="centercolumn fill">
-
+					<div class='center'>
+						<button class='button' onClick={()=>undoLast()}>Undo</button>
+					</div>
+					<div class='center'>Red Wins = {redWins}</div>
+					<div class='center'>Yellow Wins = {yellowWins}</div>
+	
 						{ <><div className="droprow center">
 						<div className="dropbox center">
 							<button className="button" onClick={()=>handleDropCol(0)}>Drop</button>
